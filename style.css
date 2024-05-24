@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 600px;
+    cursor: none;
+
+}
+.container {
+    width: 900px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.row{
+    display: flex;
+}
+
+.hole {
+   
+    width: 110px;
+    aspect-ratio: 1/1;
+
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 100%;
+
+
+}
+.cursor {
+    height: 90px;
+    width: 80px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    background-image: url("assets/hammer.png");
+    background-size: 100% 100%;
+    transform: translate(-20%, -20%);
+    transition: transform 0.1s;
+    pointer-events: none;
+}
+.cursor.active{
+    transform: translate(-20%, -20%) rotate(-45deg);
+}
+
+@media (max-width:900px){
+    .container{
+        width: 100%;
+    }
+}
