@@ -42,9 +42,16 @@ window.addEventListener('mousemove', e => {
 window.addEventListener('mousedown', () => {
     cursor.classList.add('active')
 })
+window.addEventListener('touchstart', () => {
+    cursor.classList.add('active')
+})
 window.addEventListener('mouseup', () => {
     cursor.classList.remove('active')
 })
+window.addEventListener('touchend', () => {
+    cursor.classList.remove('active')
+})
+
 // window.addEventListener('mouseleave', () => {
 //     cursor.classList.remove('active')
 // })
