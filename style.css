@@ -20,6 +20,7 @@ body{
     justify-content: center;
     margin: auto;
     background-color: cadetblue;
+    position: relative;
 }
 .row{
     display: flex;
@@ -66,7 +67,7 @@ body{
     position: absolute;
     top: 100px;
     left: 100px;
-    background-image: url("assets/hammer.png");
+    background-image: none;
     background-size: 100% 100%;
     transform: translate(-10%, -40%);
     transition: transform 0.1s;
@@ -75,7 +76,26 @@ body{
 .cursor.active{
     transform: translate(-20%, -20%) rotate(-45deg);
 }
-
+.modal-gameover{
+    display: none;
+}
+.container-modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000050;
+}
+.modal-start button{
+    background-color: aquamarine;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+}
 @media (max-width:900px){
     .container{
         width: 100%;

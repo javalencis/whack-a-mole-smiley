@@ -1,8 +1,10 @@
 const cursor = document.querySelector('.cursor')
-
-
+const btStart = document.querySelector('.bt-start')
+const cModal = document.querySelector('.container-modal')
+const body = document.querySelector('.body')
 const holes = [...document.querySelectorAll('.hole')]
 let timer = null
+btStart.addEventListener('click',start)
 
 function run(){
     const i = Math.floor(Math.random() * holes.length)
@@ -30,6 +32,13 @@ function handleClickMole(mole,hole){
         hole.removeChild(mole)
         run()
     }, 500);
+}
+
+function start(){
+    cModal.style.display = 'none'
+    cursor.style.backgroundImage = 'url("assets/hammer.png")'
+    body.style.cursor = 'none'
+
 }
 
 run()
