@@ -52,7 +52,4 @@ window.addEventListener('touchend', () => {
     cursor.classList.remove('active')
 })
 
-// window.addEventListener('mouseleave', () => {
-//     cursor.classList.remove('active')
-// })
 
