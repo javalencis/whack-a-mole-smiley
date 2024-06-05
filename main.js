@@ -2,8 +2,13 @@ const cursor = document.querySelector('.cursor')
 const btStart = document.querySelector('.bt-start')
 const cModal = document.querySelector('.container-modal')
 const body = document.querySelector('.body')
+const time = document.querySelector('.time')
+const score = document.querySelector('.score')
 const holes = [...document.querySelectorAll('.hole')]
 let timer = null
+let timeGame = 45
+let timerGame = null
+let scoreGame = 0
 btStart.addEventListener('click',start)
 
 function run(){
@@ -25,6 +30,8 @@ function run(){
 
 function handleClickMole(mole,hole){
     clearTimeout(timer)
+    scoreGame++
+    score.innerHTML = scoreGame.toString()
     mole.src = 'assets/mole-whacked.png'
     mole.removeEventListener('click', handleClickMole);
     
@@ -39,6 +46,13 @@ function start(){
     cursor.style.backgroundImage = 'url("assets/hammer.png")'
     body.style.cursor = 'none'
 
+    timerGame = setInterval(() => {
+        if(timeGame === 0){
+            clearInterval(timerGame)
+        }
+        time.innerHTML= timeGame.toString()
+        timeGame--
+    }, 1000);
 }
 
 run()
