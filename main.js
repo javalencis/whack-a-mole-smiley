@@ -9,6 +9,10 @@ let timer = null
 let timeGame = 45
 let timerGame = null
 let scoreGame = 0
+let speedMole = 1500
+
+
+
 btStart.addEventListener('click',start)
 
 function run(){
@@ -24,7 +28,7 @@ function run(){
     timer = setTimeout(() => {
         hole.removeChild(mole)
         run()
-    }, 1500)
+    }, speedMole)
 }
 
 
@@ -52,6 +56,8 @@ function start(){
         }
         time.innerHTML= timeGame.toString()
         timeGame--
+        speedMole-=15
+        console.log(speedMole);
     }, 1000);
 }
 
