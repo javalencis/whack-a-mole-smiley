@@ -1,9 +1,13 @@
 const cursor = document.querySelector('.cursor')
 const btStart = document.querySelector('.bt-start')
+const modalStart = document.querySelector('.modal-start')
 const cModal = document.querySelector('.container-modal')
 const body = document.querySelector('.body')
 const time = document.querySelector('.time')
 const score = document.querySelector('.score')
+const modalGameOver = document.querySelector('.modal-gameover')
+
+
 const holes = [...document.querySelectorAll('.hole')]
 let timer = null
 let timeGame = 25
@@ -43,7 +47,7 @@ function handleClickMole(mole, hole) {
 
         mole.src = 'assets/smileyhappy.png'
 
-        
+
 
 
     }, 500)
@@ -63,40 +67,53 @@ function handleClickMole(mole, hole) {
 
 }
 
+function gameOver (){
+    if(timeGame === 0){
+        cModal.style.display = 'flex'
+        modalGameOver.style.display = 'flex'
+        cursor.style.display='none'
+        body.style.cursor = 'auto'
 
-    function start() {
-        cModal.style.display = 'none'
-        cursor.style.backgroundImage = 'url("assets/hammer.png")'
-        body.style.cursor = 'none'
 
-        timerGame = setInterval(() => {
-            if (timeGame === 0) {
-                clearInterval(timerGame)
-            }
-            time.innerHTML = timeGame.toString()
-            timeGame--
-            speedMole -= 20
-        }, 800);
     }
+}
 
-    run()
 
-    window.addEventListener('mousemove', e => {
-        cursor.style.top = e.pageY + 'px'
-        cursor.style.left = e.pageX + 'px'
-    })
+function start() {
+    cModal.style.display = 'none'
+    modalStart.style.display = 'none'
+    cursor.style.backgroundImage = 'url("assets/hammer.png")'
+    body.style.cursor = 'none'
 
-    window.addEventListener('mousedown', () => {
-        cursor.classList.add('active')
-    })
-    window.addEventListener('touchstart', () => {
-        cursor.classList.add('active')
-    })
-    window.addEventListener('mouseup', () => {
-        cursor.classList.remove('active')
-    })
-    window.addEventListener('touchend', () => {
-        cursor.classList.remove('active')
-    })
+    timerGame = setInterval(() => {
+        if (timeGame === 0) {
+            clearInterval(timerGame)
+        }
+        time.innerHTML = timeGame.toString()
+        timeGame--
+        gameOver()
+        speedMole -= 20
+    }, 800);
+}
+
+run()
+
+window.addEventListener('mousemove', e => {
+    cursor.style.top = e.pageY + 'px'
+    cursor.style.left = e.pageX + 'px'
+})
+
+window.addEventListener('mousedown', () => {
+    cursor.classList.add('active')
+})
+window.addEventListener('touchstart', () => {
+    cursor.classList.add('active')
+})
+window.addEventListener('mouseup', () => {
+    cursor.classList.remove('active')
+})
+window.addEventListener('touchend', () => {
+    cursor.classList.remove('active')
+})
 
 
