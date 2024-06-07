@@ -6,7 +6,7 @@ const time = document.querySelector('.time')
 const score = document.querySelector('.score')
 const holes = [...document.querySelectorAll('.hole')]
 let timer = null
-let timeGame = 45
+let timeGame = 25
 let timerGame = null
 let scoreGame = 0
 let speedMole = 1500
@@ -19,8 +19,9 @@ function run(){
     const i = Math.floor(Math.random() * holes.length)
     const hole = holes[i]
     let mole = document.createElement('img')
+    mole.setAttribute('draggable', false);
     mole.classList.add('mole')
-    mole.src = 'assets/mole.png'
+    mole.src = 'assets/smileysad.png'
     
     mole.addEventListener('click',()=>handleClickMole(mole,hole))
 
@@ -36,7 +37,7 @@ function handleClickMole(mole,hole){
     clearTimeout(timer)
     scoreGame++
     score.innerHTML = scoreGame.toString()
-    mole.src = 'assets/mole-whacked.png'
+    mole.src = 'assets/smileyhappy.png'
     mole.removeEventListener('click', handleClickMole);
     
     setTimeout(() => {
@@ -56,7 +57,7 @@ function start(){
         }
         time.innerHTML= timeGame.toString()
         timeGame--
-        speedMole-=15
+        speedMole-=20
         console.log(speedMole);
     }, 1000);
 }
