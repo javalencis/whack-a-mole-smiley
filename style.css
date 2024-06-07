@@ -165,6 +165,17 @@ body {
     font-size: 24px;
     padding: 10px;
 }
+
+.modal-gameover button{
+    border: none;
+    background-color: #f2e628;
+    font-family: "gothamblack";
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+
+}
 @media (max-width: 900px) {
     .container {
         width: 100%;
