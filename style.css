@@ -79,11 +79,14 @@ body{
     0 0 5px rgba(0, 0, 0, .5);
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .hole .mole{
-    width: 76%;
+    width: 90%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -95,7 +98,13 @@ body{
     -o-user-select: none;
     user-select: none;
 
+
 }
+.hole .paint{
+    z-index: 10;
+}
+
+
 @keyframes rise {
     0%{
         transform: translateX(-50%) translateY(100%);
@@ -115,6 +124,7 @@ body{
     transform: translate(-10%, -40%);
     transition: transform 0.1s;
     pointer-events: none;
+    z-index:11;
 }
 .cursor.active{
     transform: translate(-20%, -20%) rotate(-45deg);
