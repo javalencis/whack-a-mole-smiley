@@ -12,7 +12,7 @@ let holes = [...document.querySelectorAll('.hole')]
 let mole = null
 let hole = null
 let timer = null
-let timeGame = 5
+let timeGame = 25
 let timerGame = null
 let scoreGame = 0
 let speedMole = 1500
@@ -39,6 +39,7 @@ function run() {
 
         run()
     }, speedMole)
+    console.log(speedMole);
 }
 
 
@@ -88,7 +89,7 @@ function countTimeGame(){
         }
         time.innerHTML = timeGame.toString()
         timeGame--
-        speedMole -= 20
+        speedMole -= 40
     }, 1000);
 }
 function again() {
