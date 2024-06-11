@@ -1,3 +1,6 @@
+import { msn } from "./src/cupons.js"
+
+
 const cursor = document.querySelector('.cursor')
 const btStart = document.querySelector('.bt-start')
 const modalStart = document.querySelector('.modal-start')
@@ -7,6 +10,12 @@ const time = document.querySelector('.time')
 const score = document.querySelector('.score')
 const modalGameOver = document.querySelector('.modal-gameover')
 const btAgain = document.querySelector('.bt-again')
+const contentMsn = document.querySelector('.content-msn')
+const cupon = document.querySelector('.cupon')
+const contentCupon = document.querySelector('.content-cupon')
+const pCheck = document.querySelector('.pCheck')
+
+
 
 let holes = [...document.querySelectorAll('.hole')]
 let mole = null
@@ -17,7 +26,7 @@ let timerGame = null
 let scoreGame = 0
 let speedMole = 1500
 
-
+contentCupon.addEventListener('click', copy)
 
 btStart.addEventListener('click', start)
 btAgain.addEventListener('click', again)
@@ -68,6 +77,45 @@ function handleClickMole() {
     }, 800);
 
 }
+function setMsnCupons(){
+    if(scoreGame>=16){
+        //cupon 10
+        contentMsn.innerHTML = msn.tenExtra.mensaje
+        cupon.innerHTML = msn.tenExtra.cupon
+    }else if(scoreGame >= 12){
+        //envio gratis
+        contentMsn.innerHTML = msn.freeShipping.mensaje
+        cupon.innerHTML = msn.freeShipping.cupon
+
+
+    }else if(scoreGame >= 8){
+        //cupon 5
+        contentMsn.innerHTML = msn.fiveExtra.mensaje
+        cupon.innerHTML = msn.fiveExtra.cupon
+
+
+    }else{
+        //nada
+        contentMsn.innerHTML = msn.nothing.mensaje
+        cupon.innerHTML = msn.nothing.cupon
+        contentCupon.style.display = 'none'
+
+
+        
+    }
+}
+
+function copy() {
+    let text = cupon.innerHTML;
+
+    const tempInput = document.createElement('input');
+    tempInput.setAttribute("value", text);
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    pCheck.style.display = 'block'
+}
 
 function gameOver() {
     if (timeGame === 0) {
@@ -76,7 +124,7 @@ function gameOver() {
         cursor.style.display = 'none'
         body.style.cursor = 'auto'
 
-
+        setMsnCupons()
     }
 }
 
@@ -103,6 +151,10 @@ function again() {
     modalGameOver.style.display = 'none'
     cursor.style.display = 'block'
     body.style.cursor = 'none'
+    contentCupon.style.display="flex"
+    pCheck.style.display = 'none'
+    score.innerHTML = scoreGame.toString()
+
     hole.removeChild(mole)
     countTimeGame()
     run()

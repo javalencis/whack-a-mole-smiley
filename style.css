@@ -163,6 +163,26 @@ body {
     text-align: center;
     
 }
+.content-cupon{
+    border: 1px solid rgb(255, 255, 255);
+    padding: 10px 20px;
+    margin: 20px auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: max-content;
+    font-size: 24px;
+
+}
+.pCheck{
+    display: none;
+}
+.gameover-content .content-info{
+    padding: 10px;
+    font-size: 18px;
+}
 .container-modal {
     position: absolute;
     top: 0;
@@ -216,7 +236,9 @@ body {
    }
 }
 @media (max-width:400px) {
-   
+    .modal-gameover {
+        width: 100%;
+    }
     .c-hole img{
         width: calc(100% - 20px);
     }
