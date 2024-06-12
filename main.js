@@ -25,12 +25,14 @@ let timeGame = 25
 let timerGame = null
 let scoreGame = 0
 let speedMole = 1500
+let handleClick = true
 
 contentCupon.addEventListener('click', copy)
 
 btStart.addEventListener('click', start)
 btAgain.addEventListener('click', again)
 function run() {
+    handleClick = true
     const i = Math.floor(Math.random() * holes.length)
     hole = holes[i]
     mole = document.createElement('img')
@@ -53,6 +55,9 @@ function run() {
 
 
 function handleClickMole() {
+    if(!handleClick){
+        return
+    }
     clearTimeout(timer)
     
     scoreGame++
@@ -61,6 +66,7 @@ function handleClickMole() {
     paint.src = 'assets/paint.png'
     paint.classList.add('paint')
     hole.appendChild(paint)
+    handleClick = false
     setTimeout(() => {
         if(hole.contains(paint)){
 
@@ -74,28 +80,21 @@ function handleClickMole() {
         }
 
         run()
+    
     }, 800);
 
 }
 function setMsnCupons(){
     if(scoreGame>=16){
-        //cupon 10
         contentMsn.innerHTML = msn.tenExtra.mensaje
         cupon.innerHTML = msn.tenExtra.cupon
     }else if(scoreGame >= 12){
-        //envio gratis
         contentMsn.innerHTML = msn.freeShipping.mensaje
         cupon.innerHTML = msn.freeShipping.cupon
-
-
     }else if(scoreGame >= 8){
-        //cupon 5
         contentMsn.innerHTML = msn.fiveExtra.mensaje
         cupon.innerHTML = msn.fiveExtra.cupon
-
-
     }else{
-        //nada
         contentMsn.innerHTML = msn.nothing.mensaje
         cupon.innerHTML = msn.nothing.cupon
         contentCupon.style.display = 'none'
@@ -154,6 +153,7 @@ function again() {
     contentCupon.style.display="flex"
     pCheck.style.display = 'none'
     score.innerHTML = scoreGame.toString()
+    time.innerHTML = timeGame.toString()
 
     hole.removeChild(mole)
     countTimeGame()
